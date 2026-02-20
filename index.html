@@ -31,6 +31,7 @@
                 <nav class="hidden md:flex flex-1 justify-center gap-8">
                     <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="index.html">Calculator</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="history.html">History</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="settings.html">Settings</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
                 </nav>
                 <div class="flex items-center gap-4">
@@ -88,7 +89,7 @@
                                 <label class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Height</label>
                                 <div class="flex items-baseline gap-1">
                                     <input class="w-20 bg-transparent text-right text-2xl font-bold text-slate-900 dark:text-white border-none focus:ring-0 p-0" id="height-val" type="number" value="175"/>
-                                    <span class="text-sm text-slate-500">cm</span>
+                                    <span class="text-sm text-slate-500" id="height-unit">cm</span>
                                 </div>
                             </div>
                             <input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" id="height-slider" max="250" min="100" type="range" value="175"/>
@@ -99,7 +100,7 @@
                                 <label class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Weight</label>
                                 <div class="flex items-baseline gap-1">
                                     <input class="w-20 bg-transparent text-right text-2xl font-bold text-slate-900 dark:text-white border-none focus:ring-0 p-0" id="weight-val" type="number" value="70"/>
-                                    <span class="text-sm text-slate-500">kg</span>
+                                    <span class="text-sm text-slate-500" id="weight-unit">kg</span>
                                 </div>
                             </div>
                             <input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" id="weight-slider" max="200" min="30" type="range" value="70"/>

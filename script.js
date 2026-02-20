@@ -39,13 +39,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipIcon = document.getElementById('tip-icon');
     const personNameInput = document.getElementById('person-name');
 
+    // Load settings
+    const settings = JSON.parse(localStorage.getItem('zenbmi_settings') || '{"height": "metric", "weight": "metric"}');
+    
+    // UI adjustment for Units
+    if (settings.height === 'imperial') {
+        document.getElementById('height-unit').innerText = 'in';
+        heightSlider.max = 100; // Inches
+        heightSlider.min = 40;
+        heightSlider.value = 69;
+        heightValInput.value = 69;
+    }
+    
+    if (settings.weight === 'imperial') {
+        document.getElementById('weight-unit').innerText = 'lbs';
+        weightSlider.max = 450; // Pounds
+        weightSlider.min = 60;
+        weightSlider.value = 155;
+        weightValInput.value = 155;
+    }
+
     function updateBMI(save = false) {
-        const height = parseFloat(heightSlider.value) / 100;
-        const weight = parseFloat(weightSlider.value);
+        let heightValue = parseFloat(heightSlider.value);
+        let weightValue = parseFloat(weightSlider.value);
         
-        if (isNaN(height) || isNaN(weight) || height === 0) return;
-        
-        const bmi = (weight / (height * height)).toFixed(1);
+        if (isNaN(heightValue) || isNaN(weightValue) || heightValue === 0) return;
+
+        let bmi = 0;
+        if (settings.height === 'metric' && settings.weight === 'metric') {
+            const h = heightValue / 100;
+            bmi = (weightValue / (h * h)).toFixed(1);
+        } else if (settings.height === 'imperial' && settings.weight === 'imperial') {
+            bmi = (703 * (weightValue / (heightValue * heightValue))).toFixed(1);
+        } else {
+            // Mixed units (handle just in case)
+            let h_m = settings.height === 'imperial' ? heightValue * 0.0254 : heightValue / 100;
+            let w_kg = settings.weight === 'imperial' ? weightValue * 0.453592 : weightValue;
+            bmi = (w_kg / (h_m * h_m)).toFixed(1);
+        }
+
         bmiText.innerText = bmi;
 
         let status = '';
@@ -107,13 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
         else tipIcon.classList.add('text-accent-red');
 
         if (save) {
+            const h_unit = settings.height === 'metric' ? 'cm' : 'in';
+            const w_unit = settings.weight === 'metric' ? 'kg' : 'lbs';
             const historyData = JSON.parse(localStorage.getItem('zenbmi_history') || '[]');
             const entry = {
                 id: Date.now(),
                 name: personNameInput.value || 'Guest',
                 date: new Date().toLocaleString(),
-                height: heightSlider.value,
-                weight: weightSlider.value,
+                height: `${heightSlider.value} ${h_unit}`,
+                weight: `${weightSlider.value} ${w_unit}`,
                 bmi: bmi,
                 status: status,
                 color: color
@@ -153,10 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resetBtn) {
         resetBtn.onclick = () => {
             personNameInput.value = '';
-            heightSlider.value = 175;
-            heightValInput.value = 175;
-            weightSlider.value = 70;
-            weightValInput.value = 70;
+            if (settings.height === 'metric') {
+                heightSlider.value = 175;
+                heightValInput.value = 175;
+            } else {
+                heightSlider.value = 69;
+                heightValInput.value = 69;
+            }
+
+            if (settings.weight === 'metric') {
+                weightSlider.value = 70;
+                weightValInput.value = 70;
+            } else {
+                weightSlider.value = 155;
+                weightValInput.value = 155;
+            }
             updateBMI();
         };
     }

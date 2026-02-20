@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ZenBMI - Settings</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/bmi.png">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+    <header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-[#223649] bg-white/80 dark:bg-[#101a23]/80 backdrop-blur-md">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="size-8 overflow-hidden rounded-lg">
+                        <img src="assets/bmi.png" alt="ZenBMI Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight">ZenBMI</h2>
+                </div>
+                <nav class="hidden md:flex flex-1 justify-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Calculator</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="history.html">History</a>
+                    <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="settings.html">Settings</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-green/5 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="w-full max-w-[600px] flex flex-col gap-8">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight">Settings</h1>
+                <p class="text-slate-500 dark:text-slate-400 mt-1">Customize your units and preferences.</p>
+            </div>
+
+            <div class="glass-card p-6 md:p-8 rounded-2xl shadow-xl flex flex-col gap-8">
+                <!-- Height Units -->
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-primary">
+                        <span class="material-symbols-outlined">straighten</span>
+                        <h3 class="font-bold uppercase tracking-wider text-sm">Height Unit</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="heightUnit" value="metric" class="peer sr-only" checked>
+                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                                Centimeters (cm)
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="heightUnit" value="imperial" class="peer sr-only">
+                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                                Feet & Inches (ft/in)
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Weight Units -->
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-primary">
+                        <span class="material-symbols-outlined">fitness_center</span>
+                        <h3 class="font-bold uppercase tracking-wider text-sm">Weight Unit</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="weightUnit" value="metric" class="peer sr-only" checked>
+                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                                Kilograms (kg)
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="weightUnit" value="imperial" class="peer sr-only">
+                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                                Pounds (lbs)
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+                    <button id="save-settings" class="h-12 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">save</span>
+                        Save Preferences
+                    </button>
+                    <p id="save-status" class="text-center text-sm font-medium text-accent-green opacity-0 transition-opacity">Settings saved successfully!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- External Script -->
+    <script src="settings-logic.js"></script>
+</body>
+</html>
