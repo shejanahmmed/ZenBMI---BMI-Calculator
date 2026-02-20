@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ZenBMI - History</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/bmi.png">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+    <header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-[#223649] bg-white/80 dark:bg-[#101a23]/80 backdrop-blur-md">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="size-8 overflow-hidden rounded-lg">
+                        <img src="assets/bmi.png" alt="ZenBMI Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight">ZenBMI</h2>
+                </div>
+                <nav class="hidden md:flex flex-1 justify-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Calculator</a>
+                    <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="history.html">History</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-green/5 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="w-full max-w-[1024px] flex flex-col gap-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight">BMI History</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Review and manage your past calculations.</p>
+                </div>
+                <button id="clear-all" class="text-sm font-medium text-accent-red hover:underline decoration-accent-red/30 underline-offset-4">Clear All</button>
+            </div>
+
+            <div id="history-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- History cards will be injected here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden flex flex-col items-center justify-center py-20 gap-4 opacity-50">
+                <span class="material-symbols-outlined text-6xl">history</span>
+                <p class="text-lg">No history records found.</p>
+                <a href="index.html" class="text-primary hover:underline">Calculate your BMI now</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal (Optional/Simplified) -->
+    <div id="edit-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-background-dark/80 backdrop-blur-sm">
+        <div class="glass-card w-full max-w-md p-6 rounded-2xl shadow-2xl">
+            <h3 class="text-xl font-bold mb-4">Edit Record</h3>
+            <form id="edit-form" class="flex flex-col gap-4">
+                <input type="hidden" id="edit-id">
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold uppercase text-slate-500">Name</label>
+                    <input type="text" id="edit-name" class="w-full h-10 px-3 rounded-lg bg-input-dark border border-slate-700 outline-none focus:ring-1 focus:ring-primary">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold uppercase text-slate-500">Height (cm)</label>
+                        <input type="number" id="edit-height" class="w-full h-10 px-3 rounded-lg bg-input-dark border border-slate-700 outline-none focus:ring-1 focus:ring-primary">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold uppercase text-slate-500">Weight (kg)</label>
+                        <input type="number" id="edit-weight" class="w-full h-10 px-3 rounded-lg bg-input-dark border border-slate-700 outline-none focus:ring-1 focus:ring-primary">
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-4">
+                    <button type="button" id="close-modal" class="flex-1 h-10 border border-slate-700 rounded-lg font-medium hover:bg-white/5">Cancel</button>
+                    <button type="submit" class="flex-1 h-10 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/20">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- External Script -->
+    <script src="history-logic.js"></script>
+</body>
+</html>

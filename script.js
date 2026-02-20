@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipTitle = document.getElementById('tip-title');
     const tipDescription = document.getElementById('tip-desc');
     const tipIcon = document.getElementById('tip-icon');
+    const personNameInput = document.getElementById('person-name');
 
-    function updateBMI() {
+    function updateBMI(save = false) {
         const height = parseFloat(heightSlider.value) / 100;
         const weight = parseFloat(weightSlider.value);
         
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bmi < 18.5) {
             status = 'Underweight';
             color = '#60a5fa'; // blue-400
-            // Gauge logic: 0 to 18.5 maps to first ~18%
             pointerPos = (bmi / 18.5) * 18;
             dashOffset = 283 * (1 - (pointerPos / 100));
             tipHeader = 'Underweight Range';
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (bmi < 25) {
             status = 'Normal';
             color = '#00e676'; // accent-green
-            // 18.5 to 25 maps to 18% to 50%
             pointerPos = 18 + ((bmi - 18.5) / 6.5) * 32;
             dashOffset = 283 * (1 - (pointerPos / 100));
             tipHeader = 'Healthy Weight';
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (bmi < 30) {
             status = 'Overweight';
             color = '#ff9100'; // accent-orange
-            // 25 to 30 maps to 50% to 75%
             pointerPos = 50 + ((bmi - 25) / 5) * 25;
             dashOffset = 283 * (1 - (pointerPos / 100));
             tipHeader = 'Overweight Range';
@@ -85,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             status = 'Obese';
             color = '#ff1744'; // accent-red
-            // 30+ maps to 75% to 100%
             pointerPos = 75 + Math.min((bmi - 30) / 10, 1) * 25;
             dashOffset = 283 * (1 - (pointerPos / 100));
             tipHeader = 'Obese Range';
@@ -103,12 +100,28 @@ document.addEventListener('DOMContentLoaded', () => {
         tipDescription.innerText = tipText;
         tipIcon.innerText = icon;
         
-        // Update tip icon color
         tipIcon.className = `material-symbols-outlined shrink-0 mt-0.5`;
         if (status === 'Normal') tipIcon.classList.add('text-accent-green');
         else if (status === 'Underweight') tipIcon.classList.add('text-blue-400');
         else if (status === 'Overweight') tipIcon.classList.add('text-accent-orange');
         else tipIcon.classList.add('text-accent-red');
+
+        if (save) {
+            const historyData = JSON.parse(localStorage.getItem('zenbmi_history') || '[]');
+            const entry = {
+                id: Date.now(),
+                name: personNameInput.value || 'Guest',
+                date: new Date().toLocaleString(),
+                height: heightSlider.value,
+                weight: weightSlider.value,
+                bmi: bmi,
+                status: status,
+                color: color
+            };
+            historyData.push(entry);
+            localStorage.setItem('zenbmi_history', JSON.stringify(historyData));
+            alert('BMI data saved to history!');
+        }
     }
 
     // Input listeners
@@ -129,10 +142,17 @@ document.addEventListener('DOMContentLoaded', () => {
     weightSlider.addEventListener('input', handleWeightInput);
     weightValInput.addEventListener('input', handleWeightInput);
 
+    // Form submission
+    document.getElementById('bmi-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        updateBMI(true);
+    });
+
     // Reset button
     const resetBtn = document.getElementById('reset-btn');
     if (resetBtn) {
         resetBtn.onclick = () => {
+            personNameInput.value = '';
             heightSlider.value = 175;
             heightValInput.value = 175;
             weightSlider.value = 70;
