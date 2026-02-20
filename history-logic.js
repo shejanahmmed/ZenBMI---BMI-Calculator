@@ -181,4 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileBackdrop) mobileBackdrop.onclick = () => toggleMenu(false);
 
     loadHistory();
+
+    // Reveal page
+    document.body.classList.add('loaded');
 });

@@ -15,6 +15,11 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
     
+    <style>
+        body { opacity: 0; transition: opacity 0.3s ease-in-out; }
+        body.loaded { opacity: 1; }
+    </style>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/bmi.png">
 </head>
@@ -31,7 +36,8 @@
                 <nav class="hidden md:flex flex-1 justify-center gap-8">
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Calculator</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="history.html">History</a>
-                    <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="settings.html">Settings</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="settings.html">Settings</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
                 </nav>
                 <div class="flex items-center gap-4">
@@ -59,17 +65,13 @@
         </div>
         
         <nav class="flex flex-col gap-2">
-            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="index.html">
-                <span class="material-symbols-outlined">calculate</span>
-                Calculator
-            </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="history.html">
-                <span class="material-symbols-outlined">history</span>
-                History
-            </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-primary/20 text-primary font-bold" href="settings.html">
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="settings.html">
                 <span class="material-symbols-outlined">settings</span>
                 Settings
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="about.html">
+                <span class="material-symbols-outlined">info</span>
+                About
             </a>
             <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="#">
                 <span class="material-symbols-outlined">medical_services</span>
@@ -111,7 +113,7 @@
                         <label class="cursor-pointer">
                             <input type="radio" name="heightUnit" value="imperial" class="peer sr-only">
                             <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
-                                Feet & Inches (ft/in)
+                                Inches (in)
                             </div>
                         </label>
                     </div>
@@ -153,7 +155,7 @@
     <footer class="w-full py-6 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm mt-auto">
         <div class="max-w-[1280px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
             <p>&copy; 2026 <span class="font-bold text-slate-900 dark:text-white">ZenBMI</span>. All rights reserved.</p>
-            <p>Made with ❤️ by <span class="font-bold text-primary">Farjan Ahmmed</span></p>
+            <p>Made by <span class="font-bold text-primary">Farjan Ahmmed</span></p>
         </div>
     </footer>
 

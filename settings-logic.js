@@ -74,4 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn) mobileMenuBtn.onclick = () => toggleMenu(true);
     if (closeMobileMenu) closeMobileMenu.onclick = () => toggleMenu(false);
     if (mobileBackdrop) mobileBackdrop.onclick = () => toggleMenu(false);
+
+    // Reveal page
+    document.body.classList.add('loaded');
 });

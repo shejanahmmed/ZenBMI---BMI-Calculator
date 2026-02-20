@@ -229,4 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial calculation
     updateBMI();
+
+    // Reveal page
+    document.body.classList.add('loaded');
 });

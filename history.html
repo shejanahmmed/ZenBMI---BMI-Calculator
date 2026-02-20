@@ -15,6 +15,11 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
     
+    <style>
+        body { opacity: 0; transition: opacity 0.3s ease-in-out; }
+        body.loaded { opacity: 1; }
+    </style>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/bmi.png">
 </head>
@@ -32,6 +37,7 @@
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Calculator</a>
                     <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="history.html">History</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="settings.html">Settings</a>
+                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
                 </nav>
                 <div class="flex items-center gap-4">
@@ -70,6 +76,10 @@
             <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="settings.html">
                 <span class="material-symbols-outlined">settings</span>
                 Settings
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="about.html">
+                <span class="material-symbols-outlined">info</span>
+                About
             </a>
             <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="#">
                 <span class="material-symbols-outlined">medical_services</span>
@@ -113,7 +123,7 @@
     <footer class="w-full py-6 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm mt-auto">
         <div class="max-w-[1280px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
             <p>&copy; 2026 <span class="font-bold text-slate-900 dark:text-white">ZenBMI</span>. All rights reserved.</p>
-            <p>Made with ❤️ by <span class="font-bold text-primary">Farjan Ahmmed</span></p>
+            <p>Made by <span class="font-bold text-primary">Farjan Ahmmed</span></p>
         </div>
     </footer>
 
