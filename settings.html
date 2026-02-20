@@ -36,7 +36,7 @@
                 <nav class="hidden md:flex flex-1 justify-center gap-8">
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Calculator</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="history.html">History</a>
-                    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="settings.html">Settings</a>
+                    <a class="text-primary hover:text-primary/80 text-sm font-bold transition-colors" href="settings.html">Settings</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
                 </nav>
@@ -65,7 +65,15 @@
         </div>
         
         <nav class="flex flex-col gap-2">
-            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="settings.html">
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="index.html">
+                <span class="material-symbols-outlined">calculate</span>
+                Calculator
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="history.html">
+                <span class="material-symbols-outlined">history</span>
+                History
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-primary/20 text-primary font-bold" href="settings.html">
                 <span class="material-symbols-outlined">settings</span>
                 Settings
             </a>
@@ -103,16 +111,16 @@
                         <span class="material-symbols-outlined">straighten</span>
                         <h3 class="font-bold uppercase tracking-wider text-sm">Height Unit</h3>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 md:gap-4">
                         <label class="cursor-pointer">
                             <input type="radio" name="heightUnit" value="metric" class="peer sr-only" checked>
-                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                            <div class="flex items-center justify-center h-14 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
                                 Centimeters (cm)
                             </div>
                         </label>
                         <label class="cursor-pointer">
                             <input type="radio" name="heightUnit" value="imperial" class="peer sr-only">
-                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                            <div class="flex items-center justify-center h-14 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
                                 Inches (in)
                             </div>
                         </label>
@@ -125,16 +133,16 @@
                         <span class="material-symbols-outlined">fitness_center</span>
                         <h3 class="font-bold uppercase tracking-wider text-sm">Weight Unit</h3>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 md:gap-4">
                         <label class="cursor-pointer">
                             <input type="radio" name="weightUnit" value="metric" class="peer sr-only" checked>
-                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                            <div class="flex items-center justify-center h-14 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
                                 Kilograms (kg)
                             </div>
                         </label>
                         <label class="cursor-pointer">
                             <input type="radio" name="weightUnit" value="imperial" class="peer sr-only">
-                            <div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
+                            <div class="flex items-center justify-center h-14 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-input-dark peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary transition-all font-bold">
                                 Pounds (lbs)
                             </div>
                         </label>
