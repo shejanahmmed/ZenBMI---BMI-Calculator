@@ -35,13 +35,52 @@
                     <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Health Tips</a>
                 </nav>
                 <div class="flex items-center gap-4">
-                    <button class="md:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+                    <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center size-10 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 z-[60] hidden bg-black/60 md:hidden"></div>
+    
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed top-0 right-0 z-[70] h-full w-[280px] translate-x-full transition-transform duration-300 border-l border-slate-800 md:hidden flex flex-col p-6 shadow-2xl" style="background-color: #0f172a !important;">
+        <div class="flex items-center justify-between mb-10">
+            <div class="flex items-center gap-2">
+                <img src="assets/bmi.png" alt="ZenBMI Logo" class="size-6 object-contain">
+                <span class="font-bold text-lg">ZenBMI</span>
+            </div>
+            <button id="close-mobile-menu" class="text-slate-400 hover:text-white">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col gap-2">
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="index.html">
+                <span class="material-symbols-outlined">calculate</span>
+                Calculator
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-primary/20 text-primary font-bold" href="history.html">
+                <span class="material-symbols-outlined">history</span>
+                History
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+            <a class="flex items-center gap-4 p-4 rounded-xl text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+                <span class="material-symbols-outlined">medical_services</span>
+                Health Tips
+            </a>
+        </nav>
+        
+        <div class="mt-auto p-4 rounded-xl border border-slate-800" style="background-color: #1e293b !important;">
+            <p class="text-[10px] text-slate-400 text-center uppercase tracking-[0.2em] font-bold">ZenBMI v1.0.0</p>
+        </div>
+    </div>
 
     <main class="flex-grow flex flex-col items-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">

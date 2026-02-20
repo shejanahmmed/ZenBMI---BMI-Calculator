@@ -182,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBMI(true);
     });
 
-    // Reset button
     const resetBtn = document.getElementById('reset-btn');
     if (resetBtn) {
         resetBtn.onclick = () => {
@@ -205,6 +204,28 @@ document.addEventListener('DOMContentLoaded', () => {
             updateBMI();
         };
     }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMobileMenu = document.getElementById('close-mobile-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+
+    function toggleMenu(show) {
+        if (show) {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileBackdrop.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileMenu.classList.add('translate-x-full');
+            mobileBackdrop.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.onclick = () => toggleMenu(true);
+    if (closeMobileMenu) closeMobileMenu.onclick = () => toggleMenu(false);
+    if (mobileBackdrop) mobileBackdrop.onclick = () => toggleMenu(false);
 
     // Initial calculation
     updateBMI();
