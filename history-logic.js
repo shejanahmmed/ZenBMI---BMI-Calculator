@@ -158,6 +158,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // PDF Download Logic
+    const downloadBtn = document.getElementById('download-pdf');
+    if (downloadBtn) {
+        downloadBtn.onclick = () => {
+            const historyData = JSON.parse(localStorage.getItem('zenbmi_history') || '[]');
+            if (historyData.length === 0) {
+                alert('No history records to download.');
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Add Header
+            doc.setFontSize(22);
+            doc.setTextColor(37, 140, 244); // Primary color
+            doc.text('ZenBMI - History Report', 14, 20);
+            
+            doc.setFontSize(10);
+            doc.setTextColor(100);
+            doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 28);
+            doc.text('Developed by Farjan Ahmmed', 14, 33);
+
+            // Prepare Table Data
+            const tableColumn = ["Date", "Name", "Height", "Weight", "BMI", "Status"];
+            const tableRows = [];
+
+            historyData.reverse().forEach(entry => {
+                const rowData = [
+                    entry.date,
+                    entry.name,
+                    entry.height,
+                    entry.weight,
+                    entry.bmi,
+                    entry.status
+                ];
+                tableRows.push(rowData);
+            });
+
+            // Generate Table
+            doc.autoTable({
+                head: [tableColumn],
+                body: tableRows,
+                startY: 40,
+                headStyles: { fillColor: [37, 140, 244] },
+                styles: { fontSize: 9 },
+                alternateRowStyles: { fillColor: [245, 247, 248] }
+            });
+
+            // Save PDF
+            doc.save(`ZenBMI_Report_${Date.now()}.pdf`);
+        };
+    }
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const closeMobileMenu = document.getElementById('close-mobile-menu');
