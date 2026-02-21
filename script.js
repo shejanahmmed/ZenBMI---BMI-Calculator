@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipDescription = document.getElementById('tip-desc');
     const tipIcon = document.getElementById('tip-icon');
     const personNameInput = document.getElementById('person-name');
+    const caloriesVal = document.getElementById('calories-val');
+    const waterVal = document.getElementById('water-val');
 
     // Load settings
     const settings = JSON.parse(localStorage.getItem('zenbmi_settings') || '{"height": "metric", "weight": "metric"}');
@@ -66,19 +68,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNaN(heightValue) || isNaN(weightValue) || heightValue === 0) return;
 
         let bmi = 0;
+        let weightInKg = weightValue;
+
         if (settings.height === 'metric' && settings.weight === 'metric') {
             const h = heightValue / 100;
             bmi = (weightValue / (h * h)).toFixed(1);
+            weightInKg = weightValue;
         } else if (settings.height === 'imperial' && settings.weight === 'imperial') {
             bmi = (703 * (weightValue / (heightValue * heightValue))).toFixed(1);
+            weightInKg = weightValue * 0.453592;
         } else {
-            // Mixed units (handle just in case)
+            // Mixed units
             let h_m = settings.height === 'imperial' ? heightValue * 0.0254 : heightValue / 100;
             let w_kg = settings.weight === 'imperial' ? weightValue * 0.453592 : weightValue;
             bmi = (w_kg / (h_m * h_m)).toFixed(1);
+            weightInKg = w_kg;
         }
 
         bmiText.innerText = bmi;
+
+        // Dynamic Calories & Water
+        // Calories: Base maintenance ~33 kcal per kg
+        // Water: ~35ml per kg
+        const dailyCalories = Math.round(weightInKg * 33);
+        const dailyWater = (weightInKg * 0.035).toFixed(1);
+
+        if (caloriesVal) caloriesVal.innerText = dailyCalories.toLocaleString();
+        if (waterVal) waterVal.innerText = dailyWater;
 
         let status = '';
         let color = '#258cf4';
