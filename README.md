@@ -16,6 +16,7 @@ ZenBMI is a high-performance, aesthetically pleasing Body Mass Index (BMI) calcu
 
 - **⚡ Real-time Calculation:** Instant BMI updates as you adjust the height and weight sliders.
 - **📜 History Dashboard:** Save your results with your name and track progress over time.
+- **📄 PDF Export:** Generate and download professional PDF reports of your BMI history.
 - **⚙️ Unit Customization:** Seamlessly switch between **Metric (cm/kg)** and **Imperial (ft-in/lbs)** systems.
 - **📱 Side-Drawer Navigation:** Professional app-style drawer for easy navigation on mobile devices.
 - **💾 Data Persistence:** Uses `LocalStorage` to keep your history and settings safe even after refreshing.
