@@ -148,7 +148,7 @@
                                     <span class="text-sm text-slate-500" id="height-unit">cm</span>
                                 </div>
                             </div>
-                            <input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" id="height-slider" max="250" min="100" type="range" value="175"/>
+                            <input class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" id="height-slider" max="250" min="100" type="range" value="175"/>
                         </div>
 
                         <div class="group">
@@ -159,7 +159,7 @@
                                     <span class="text-sm text-slate-500" id="weight-unit">kg</span>
                                 </div>
                             </div>
-                            <input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" id="weight-slider" max="200" min="30" type="range" value="70"/>
+                            <input class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" id="weight-slider" max="200" min="30" type="range" value="70"/>
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4 pt-4">
@@ -175,25 +175,25 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="glass-card p-4 rounded-xl flex flex-col gap-2 hover:bg-white/5 transition-colors cursor-pointer">
+                    <div class="glass-card bg-white/90 dark:bg-white/5 p-4 rounded-xl flex flex-col gap-2 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors cursor-pointer border border-slate-200 dark:border-white/5">
                         <div class="size-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 mb-1">
                             <span class="material-symbols-outlined text-lg">local_fire_department</span>
                         </div>
                         <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Calories</span>
-                        <span class="text-xl font-bold text-white"><span id="calories-val">2,400</span> <span class="text-sm font-normal text-slate-400">kcal</span></span>
+                        <span class="text-xl font-bold text-slate-900 dark:text-white"><span id="calories-val">2,400</span> <span class="text-sm font-normal text-slate-500 dark:text-slate-400">kcal</span></span>
                     </div>
-                    <div class="glass-card p-4 rounded-xl flex flex-col gap-2 hover:bg-white/5 transition-colors cursor-pointer">
+                    <div class="glass-card bg-white/90 dark:bg-white/5 p-4 rounded-xl flex flex-col gap-2 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors cursor-pointer border border-slate-200 dark:border-white/5">
                         <div class="size-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 mb-1">
                             <span class="material-symbols-outlined text-lg">water_drop</span>
                         </div>
                         <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Water</span>
-                        <span class="text-xl font-bold text-white"><span id="water-val">2.5</span> <span class="text-sm font-normal text-slate-400">L</span></span>
+                        <span class="text-xl font-bold text-slate-900 dark:text-white"><span id="water-val">2.5</span> <span class="text-sm font-normal text-slate-500 dark:text-slate-400">L</span></span>
                     </div>
                 </div>
             </div>
 
             <div class="lg:col-span-5 flex flex-col h-full">
-                <div class="glass-card rounded-2xl p-6 md:p-8 shadow-xl flex flex-col items-center justify-between h-full relative overflow-hidden" style="min-height: 600px !important; height: 600px !important;">
+                <div class="glass-card bg-white/90 dark:bg-card-dark rounded-2xl p-6 md:p-8 shadow-xl flex flex-col items-center justify-between h-full relative overflow-hidden border border-slate-200 dark:border-white/5" style="min-height: 600px !important; height: 600px !important;">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/5 pointer-events-none"></div>
                     <div class="text-center z-10 w-full flex justify-between items-center mb-6">
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white">Your Result</h3>
@@ -205,7 +205,7 @@
 
                     <div class="relative w-64 h-64 flex items-center justify-center mb-6 z-10">
                         <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" fill="none" r="45" stroke="#23303e" stroke-linecap="round" stroke-width="8"></circle>
+                            <circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" class="text-slate-100 dark:text-slate-800" stroke-linecap="round" stroke-width="8"></circle>
                             <circle class="gauge-circle" cx="50" cy="50" fill="none" r="45" stroke="#258cf4" stroke-dasharray="283" stroke-dashoffset="100" stroke-linecap="round" stroke-width="8"></circle>
                         </svg>
                         <div class="absolute inset-0 flex flex-col items-center justify-center">
@@ -220,15 +220,15 @@
                             <span>Normal</span>
                             <span>High</span>
                         </div>
-                        <div class="h-3 w-full rounded-full bg-slate-200 dark:bg-slate-800 flex overflow-hidden relative">
+                        <div class="h-3 w-full rounded-full bg-slate-100 dark:bg-slate-800 flex overflow-hidden relative border border-slate-200 dark:border-transparent">
                             <div class="h-full bg-blue-400 w-[18%]"></div> 
                             <div class="h-full bg-accent-green w-[32%]"></div> 
                             <div class="h-full bg-accent-orange w-[25%]"></div> 
                             <div class="h-full bg-accent-red flex-1"></div> 
-                            <div class="absolute top-0 bottom-0 w-1 bg-white z-10" style="left: 45%;"></div>
+                            <div class="absolute top-0 bottom-0 w-1 bg-white dark:bg-white z-10" style="left: 45%;"></div>
                         </div>
 
-                        <div class="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-[#151f29] border border-slate-200 dark:border-slate-800/50">
+                        <div class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-[#151f29] border border-slate-200 dark:border-slate-800/50">
                             <div class="flex items-start gap-3">
                                 <span class="material-symbols-outlined text-accent-green shrink-0 mt-0.5" id="tip-icon">check_circle</span>
                                 <div>

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         historyData.reverse().forEach(entry => {
             const card = document.createElement('div');
-            card.className = 'glass-card p-6 rounded-2xl flex flex-col gap-4 shadow-xl border border-slate-200 dark:border-slate-800 relative group transition-all hover:scale-[1.02]';
+            card.className = 'glass-card bg-white/90 dark:bg-card-dark p-6 rounded-2xl flex flex-col gap-4 shadow-xl border border-slate-200 dark:border-slate-800 relative group transition-all hover:scale-[1.02]';
             
             card.innerHTML = `
                 <div class="flex justify-between items-start">
@@ -66,26 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 
                 <div class="grid grid-cols-3 gap-2 mt-2">
-                    <div class="bg-slate-50 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center">
+                    <div class="bg-slate-100/50 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center border border-slate-100 dark:border-transparent">
                         <span class="text-[10px] font-semibold text-slate-500 uppercase">Height</span>
-                        <span class="text-lg font-bold">${entry.height} <span class="text-xs font-normal">cm</span></span>
+                        <span class="text-lg font-bold text-slate-900 dark:text-white">${entry.height}</span>
                     </div>
-                    <div class="bg-slate-50 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center">
+                    <div class="bg-slate-100/50 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center border border-slate-100 dark:border-transparent">
                         <span class="text-[10px] font-semibold text-slate-500 uppercase">Weight</span>
-                        <span class="text-lg font-bold">${entry.weight} <span class="text-xs font-normal">kg</span></span>
+                        <span class="text-lg font-bold text-slate-900 dark:text-white">${entry.weight}</span>
                     </div>
-                    <div class="bg-slate-50 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center border border-primary/20">
+                    <div class="bg-primary/5 dark:bg-input-dark p-3 rounded-xl flex flex-col items-center border border-primary/20">
                         <span class="text-[10px] font-semibold text-primary uppercase">BMI</span>
                         <span class="text-lg font-bold text-primary">${entry.bmi}</span>
                     </div>
                 </div>
 
                 <div class="flex gap-3 mt-4">
-                    <button onclick="editRecord(${entry.id})" class="flex-1 h-10 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+                    <button onclick="editRecord(${entry.id})" class="flex-1 h-10 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined text-lg">edit</span>
                         Edit
                     </button>
-                    <button onclick="deleteRecord(${entry.id})" class="flex-1 h-10 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-accent-red/5 hover:text-accent-red hover:border-accent-red/20 transition-all flex items-center justify-center gap-2">
+                    <button onclick="deleteRecord(${entry.id})" class="flex-1 h-10 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-accent-red/5 hover:text-accent-red hover:border-accent-red/20 transition-all flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined text-lg">delete</span>
                         Delete
                     </button>
