@@ -244,11 +244,24 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 28);
             doc.text('Developed by Farjan Ahmmed', 14, 33);
 
-            const tableColumn = ["Date", "Name", "Height", "Weight", "BMI", "Status"];
+            const tableColumn = ["Date", "Time", "Name", "Height", "Weight", "BMI", "Status"];
             const tableRows = [];
 
             historyData.reverse().forEach(entry => {
-                tableRows.push([entry.date, entry.name, entry.height, entry.weight, entry.bmi, entry.status]);
+                // Split date and time (assumes "MM/DD/YYYY, HH:MM:SS" format from toLocaleString)
+                const parts = entry.date.split(', ');
+                const datePart = parts[0] || entry.date;
+                const timePart = parts[1] || '-';
+                
+                tableRows.push([
+                    datePart,
+                    timePart,
+                    entry.name,
+                    entry.height,
+                    entry.weight,
+                    entry.bmi,
+                    entry.status
+                ]);
             });
 
             doc.autoTable({
@@ -256,7 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: tableRows,
                 startY: 40,
                 headStyles: { fillColor: [37, 140, 244] },
-                styles: { fontSize: 9 },
+                styles: { fontSize: 8 },
+                columnStyles: {
+                    0: { cellWidth: 25 }, // Date
+                    1: { cellWidth: 25 }, // Time
+                    2: { cellWidth: 'auto' } // Name
+                },
                 alternateRowStyles: { fillColor: [245, 247, 248] }
             });
 
